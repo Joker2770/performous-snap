@@ -57,7 +57,7 @@ apps:
     command: usr/local/bin/performous
     environment:
       # pulseaudio
-      LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
+      LD_LIBRARY_PATH: "$LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/blas:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio"
     plugs:
       - home
       - audio-playback
@@ -109,6 +109,7 @@ parts:
       - gcc
       - g++
       - cmake
+      - gettext
       - libaubio-dev
       - libavutil-dev
       - libavcodec-dev
@@ -163,6 +164,7 @@ parts:
       - libopencv-core4.2
       - libopencv-highgui4.2
       - libopusfile0
+      - libgdk-pixbuf2.0-0
       - libportaudio2
       - libpulse0
       - libpng16-16

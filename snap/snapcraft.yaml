@@ -53,7 +53,7 @@ plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
   
 apps:
   performous-snap:
-    command-chain: ["snap/command-chain/alsa-launch", "bin/desktop-launch"]
+    command-chain: ["snap/command-chain/alsa-launch"]
     command: usr/local/bin/performous
     environment:
       # pulseaudio

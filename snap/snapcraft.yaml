@@ -54,7 +54,7 @@ plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
 apps:
   performous-snap:
     command-chain: ["snap/command-chain/alsa-launch", "bin/desktop-launch"]
-    command: share/games/performous
+    command: usr/local/bin/performous
     environment:
       # pulseaudio
       LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
@@ -77,6 +77,8 @@ layout:
     bind: $SNAP/usr/share/midi/freepats
   /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib:
     bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
+  /usr/local/share/games/performous:
+    bind: $SNAP/usr/local/share/games/performous
   /usr/share/alsa:
     bind: $SNAP/usr/share/alsa
   /etc/timidity:
@@ -146,6 +148,10 @@ parts:
       - libavutil56
       - libavcodec58
       - libavformat58
+      - libboost-iostreams1.71.0
+      - libboost-locale1.71.0
+      - libboost-program-options1.71.0
+      - libboost-thread1.71.0
       - libcairo2
       - libepoxy0
       - libglibmm-2.4-1v5
@@ -156,6 +162,7 @@ parts:
       - libopencv-core4.2
       - libopencv-highgui4.2
       - libopusfile0
+      - libportaudio2
       - libpulse0
       - libpng16-16
       - libpangocairo-1.0-0

@@ -57,7 +57,7 @@ apps:
     command: usr/local/bin/performous
     environment:
       # pulseaudio
-      LD_LIBRARY_PATH: "$LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/blas:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio"
+      LD_LIBRARY_PATH: "$LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/blas:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/lapack:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio"
     plugs:
       - home
       - audio-playback
@@ -155,11 +155,12 @@ parts:
       - libboost-program-options1.71.0
       - libboost-thread1.71.0
       - libcairo2
+      - libcrypto++6
       - libepoxy0
       - libglibmm-2.4-1v5
       - libglu1-mesa
       - libjpeg8
-      - libcrypto++6
+      - liblapack3
       - libmodplug1
       - libopencv-core4.2
       - libopencv-highgui4.2

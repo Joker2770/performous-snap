@@ -122,7 +122,8 @@ parts:
       - libglibmm-2.4-dev
       - libglm-dev
       - libgtest-dev
-      - libjpeg9-dev
+      - libjpeg-dev
+      - libjpeg8-dev
       - libopencv-dev
       - libopencv-highgui-dev
       - libpng-dev
@@ -145,7 +146,7 @@ parts:
       - libepoxy0
       - libglibmm-2.4-1v5
       - libglu1-mesa
-      - libjpeg9
+      - libjpeg8
       - libcrypto++6
       - libmodplug1
       - libopencv-core4.2

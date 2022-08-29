@@ -116,11 +116,15 @@ parts:
       - libboost-program-options-dev
       - libboost-system-dev
       - libboost-locale-dev
+      - libcrypto++-dev
       - libepoxy-dev
       - libfmt-dev
       - libglibmm-2.4-dev
       - libglm-dev
+      - libgtest-dev
       - libjpeg9-dev
+      - libopencv-dev
+      - libopencv-highgui-dev
       - libpng-dev
       - librsvg2-dev
       - libswscale-dev
@@ -129,6 +133,7 @@ parts:
       - libsdl2-image-dev
       - libsdl2-ttf-dev
       - libsdl2-mixer-dev
+      - libssl-dev
       - libxml++2.6-dev
       - nlohmann-json3-dev
       - portaudio19-dev
@@ -141,7 +146,10 @@ parts:
       - libglibmm-2.4-1v5
       - libglu1-mesa
       - libjpeg9
+      - libcrypto++6
       - libmodplug1
+      - libopencv-core4.2
+      - libopencv-highgui4.2
       - libopusfile0
       - libpulse0
       - libpng16-16
@@ -153,5 +161,6 @@ parts:
       - libsdl2-image-2.0-0
       - libsdl2-ttf-2.0-0
       - libsdl2-mixer-2.0-0
+      - libssl1.1
       - libxml++2.6-2v5
       - freepats

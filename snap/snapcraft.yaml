@@ -1,0 +1,154 @@
+#    snapcraft yaml for performous-snap.
+#    Copyright (C) 2021-2022 joker2770
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License along
+#    with this program; if not, write to the Free Software Foundation, Inc.,
+#    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+# After registering a name on build.snapcraft.io, commit an uncommented line:
+name: performous-snap
+version: '0.8.2' # just for humans, typically '1.2+git' or '1.3.2'
+summary: An open-source music and rhythm game. # 79 char long summary
+description: |
+  An open-source karaoke, band and dancing game where one or more players
+  perform a song and the game scores their performances. Supports songs
+  in UltraStar, Frets on Fire and StepMania formats. Microphones and
+  instruments from SingStar, Guitar Hero and Rock Band as well as
+  some dance pads are autodetected.
+
+  Website at http://performous.org/ << If you can't reach it try the
+  mirror https://performous.asgardsings.nl
+  Wiki at https://github.com/performous/performous/wiki Discord at https://discord.gg/NS3m3ad
+
+  For compiling instructions, see docs/Compiling.txt or visit the
+  wiki page: https://github.com/performous/performous/wiki/Building-and-installing-from-source
+
+grade: stable # must be 'stable' to release into candidate/stable channels
+confinement: strict # use 'strict' once you have the right plugs and slots
+base: core18
+
+plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
+  gtk-3-themes:
+    interface: content
+    target: $SNAP/data-dir/themes
+    default-provider: gtk-common-themes
+  icon-themes:
+    interface: content
+    target: $SNAP/data-dir/icons
+    default-provider: gtk-common-themes
+  sound-themes:
+    interface: content
+    target: $SNAP/data-dir/sounds
+    default-provider: gtk-common-themes
+  
+apps:
+  performous-snap:
+    command-chain: ["snap/command-chain/alsa-launch"]
+    command: share/games/performous
+    environment:
+      # pulseaudio
+      LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
+    extensions: [gnome-3-28]
+    plugs:
+      - home
+      - audio-playback
+      - pulseaudio
+      - alsa
+      - desktop
+      - desktop-legacy
+      - wayland
+      - unity7
+      - x11
+      - opengl
+      - gsettings
+      - removable-media
+        
+layout:
+  /usr/share/midi/freepats:
+    bind: $SNAP/usr/share/midi/freepats
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib:
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
+  /usr/share/alsa:
+    bind: $SNAP/usr/share/alsa
+  /etc/timidity:
+    bind: $SNAP/etc/timidity
+  /etc/fonts:
+    bind: $SNAP/etc/fonts
+    
+parts:
+  alsa-mixin:
+    plugin: dump
+    source: https://github.com/diddlesnaps/snapcraft-alsa.git
+    source-subdir: snapcraft-assets
+    build-packages:
+      - libasound2-dev
+    stage-packages:
+      - libasound2
+      - libasound2-plugins
+      - yad
+
+  performous-snap:
+    after: [alsa-mixin]
+    plugin: cmake
+    source: "https://github.com/performous/performous.git"
+    source-depth: 1
+    source-branch: master
+    source-type: git
+    build-packages:
+      - gcc
+      - g++
+      - cmake
+      - libaubio-dev
+      - libavutil-dev
+      - libavcodec-dev
+      - libavformat-dev
+      - libboost-system-dev
+      - libboost-locale-dev
+      - libepoxy-dev
+      - libfmt-dev
+      - libglibmm-2.4-dev
+      - libglm-dev
+      - libjpeg9-dev
+      - libpng-dev
+      - librsvg2-dev
+      - libswscale-dev
+      - libsigc++-2.0-dev
+      - libsdl2-dev
+      - libsdl2-image-dev
+      - libsdl2-ttf-dev
+      - libsdl2-mixer-dev
+      - libxml++2.6-dev
+      - nlohmann-json-dev
+      - portaudio19-dev
+    stage-packages:
+      - libaubio5
+      - libavutil55
+      - libavcodec57
+      - libavformat57
+      - libepoxy0
+      - libglibmm-2.4-1v5
+      - libglu1-mesa
+      - libjpeg9
+      - libmodplug1
+      - libopusfile0
+      - libpulse0
+      - libpng16-16
+      - librsvg2-2
+      - libsndfile1
+      - libswscale4
+      - libsigc++-2.0-0v5
+      - libsdl2-2.0-0
+      - libsdl2-image-2.0-0
+      - libsdl2-ttf-2.0-0
+      - libsdl2-mixer-2.0-0
+      - freepats

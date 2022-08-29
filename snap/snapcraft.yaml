@@ -116,6 +116,7 @@ parts:
       - libboost-program-options-dev
       - libboost-system-dev
       - libboost-locale-dev
+      - libcairo2-dev
       - libcrypto++-dev
       - libepoxy-dev
       - libfmt-dev
@@ -143,6 +144,7 @@ parts:
       - libavutil56
       - libavcodec58
       - libavformat58
+      - libcairo2
       - libepoxy0
       - libglibmm-2.4-1v5
       - libglu1-mesa
@@ -154,6 +156,7 @@ parts:
       - libopusfile0
       - libpulse0
       - libpng16-16
+      - libpangocairo-1.0-0
       - librsvg2-2
       - libsndfile1
       - libswscale5

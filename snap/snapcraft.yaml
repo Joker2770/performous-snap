@@ -148,6 +148,7 @@ parts:
       - libavutil56
       - libavcodec58
       - libavformat58
+      - libblas3
       - libboost-iostreams1.71.0
       - libboost-locale1.71.0
       - libboost-program-options1.71.0

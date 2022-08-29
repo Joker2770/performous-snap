@@ -35,7 +35,7 @@ description: |
 
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
-base: core18
+base: core20
 
 plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
   gtk-3-themes:
@@ -53,12 +53,11 @@ plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
   
 apps:
   performous-snap:
-    command-chain: ["snap/command-chain/alsa-launch"]
+    command-chain: ["snap/command-chain/alsa-launch", "bin/desktop-launch"]
     command: share/games/performous
     environment:
       # pulseaudio
       LD_LIBRARY_PATH: ${SNAP}/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio
-    extensions: [gnome-3-28]
     plugs:
       - home
       - audio-playback
@@ -132,9 +131,9 @@ parts:
       - portaudio19-dev
     stage-packages:
       - libaubio5
-      - libavutil55
-      - libavcodec57
-      - libavformat57
+      - libavutil56
+      - libavcodec58
+      - libavformat58
       - libepoxy0
       - libglibmm-2.4-1v5
       - libglu1-mesa
@@ -145,10 +144,11 @@ parts:
       - libpng16-16
       - librsvg2-2
       - libsndfile1
-      - libswscale4
+      - libswscale5
       - libsigc++-2.0-0v5
       - libsdl2-2.0-0
       - libsdl2-image-2.0-0
       - libsdl2-ttf-2.0-0
       - libsdl2-mixer-2.0-0
+      - libxml++2.6-2v5
       - freepats

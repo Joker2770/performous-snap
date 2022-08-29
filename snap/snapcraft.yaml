@@ -111,6 +111,8 @@ parts:
       - libavutil-dev
       - libavcodec-dev
       - libavformat-dev
+      - libboost-dev
+      - libboost-program-options-dev
       - libboost-system-dev
       - libboost-locale-dev
       - libepoxy-dev

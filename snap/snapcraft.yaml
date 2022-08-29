@@ -127,7 +127,7 @@ parts:
       - libsdl2-ttf-dev
       - libsdl2-mixer-dev
       - libxml++2.6-dev
-      - nlohmann-json-dev
+      - nlohmann-json3-dev
       - portaudio19-dev
     stage-packages:
       - libaubio5

@@ -112,6 +112,7 @@ parts:
       - libavcodec-dev
       - libavformat-dev
       - libboost-dev
+      - libboost-iostreams-dev
       - libboost-program-options-dev
       - libboost-system-dev
       - libboost-locale-dev

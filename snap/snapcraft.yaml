@@ -122,6 +122,7 @@ parts:
       - libfmt-dev
       - libglibmm-2.4-dev
       - libglm-dev
+      - libgmock-dev
       - libgtest-dev
       - libjpeg-dev
       - libjpeg8-dev

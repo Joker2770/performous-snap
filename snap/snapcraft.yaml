@@ -127,7 +127,7 @@ parts:
       - libjpeg8-dev
       - libopencv-dev
       - libopencv-highgui-dev
-      - libpangocairo-1.0-0
+      - libpango1.0-dev
       - libpng-dev
       - librsvg2-dev
       - libswscale-dev

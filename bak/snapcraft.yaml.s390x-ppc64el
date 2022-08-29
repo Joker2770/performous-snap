@@ -71,6 +71,7 @@ apps:
       - audio-playback
       - pulseaudio
       - alsa
+      - jack1
       - desktop
       - desktop-legacy
       - wayland
@@ -191,3 +192,4 @@ parts:
       - libssl1.1
       - libxml++2.6-2v5
       - freepats
+      - jackd1

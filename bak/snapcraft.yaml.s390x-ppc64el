@@ -112,6 +112,8 @@ parts:
   performous-snap:
     after: [alsa-mixin]
     plugin: cmake
+    cmake-parameters:
+      - -DCMAKE_CXX_STANDARD=11
     source: "https://github.com/performous/performous.git"
     source-depth: 1
     source-branch: master

@@ -36,7 +36,7 @@ description: |
 
   _More build details: https://github.com/Joker2770/performous-snap_
 
-  Tips: Performous can looks for songs from `~/snap/performous-snap/current/`.
+  Tips: Performous can look for songs from `~/snap/performous-snap/current/`.
 
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots

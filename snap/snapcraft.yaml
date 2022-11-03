@@ -42,8 +42,9 @@ grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
 base: core20
 architectures:
-  - build-on: s390x
-  - build-on: ppc64el
+  - build-on: amd64
+  - build-on: armhf
+  - build-on: arm64
 
 plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
   gtk-3-themes:
@@ -61,11 +62,12 @@ plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
   
 apps:
   performous-snap:
-    command-chain: ["snap/command-chain/alsa-launch", "bin/desktop-launch"]
+    command-chain: ["snap/command-chain/alsa-launch"]
     command: usr/local/bin/performous
     environment:
       # pulseaudio
       LD_LIBRARY_PATH: "$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/blas:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/lapack:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio"
+    extensions: [gnome-3-38]
     plugs:
       - home
       - audio-playback
@@ -98,17 +100,7 @@ layout:
     bind: $SNAP/etc/fonts
     
 parts:
-  desktop-glib-only:
-    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
-    source-subdir: glib-only
-    plugin: make
-    build-packages:
-      - libglib2.0-dev
-    stage-packages:
-      - libglib2.0-bin
-
   alsa-mixin:
-    after: [desktop-glib-only]
     plugin: dump
     source: https://github.com/diddlesnaps/snapcraft-alsa.git
     source-subdir: snapcraft-assets

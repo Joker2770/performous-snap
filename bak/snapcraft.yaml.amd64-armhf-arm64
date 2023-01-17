@@ -123,7 +123,6 @@ parts:
     source-depth: 1
     source-branch: master
     source-type: git
-    build-attributes: [keep-execstack]
     build-packages:
       - gcc
       - g++

@@ -170,7 +170,7 @@ parts:
       - libgtest-dev
       - libicu-dev
       - libjpeg-dev
-      - libjpeg8-dev
+      - libjpeg9-dev
       - libopenblas-dev
       - libopencv-dev
       - libopencv-highgui-dev
@@ -191,45 +191,45 @@ parts:
       - portaudio19-dev
     stage-packages:
       - libaubio5
-      - libavutil56
-      - libavcodec58
-      - libavformat58
+      - libavutil59
+      - libavcodec61
+      - libavformat61
       - libblas3
-      - libboost-iostreams1.71.0
-      - libboost-locale1.71.0
-      - libboost-program-options1.71.0
-      - libboost-thread1.71.0
+      - libboost-iostreams1.83.0
+      - libboost-locale1.83.0
+      - libboost-program-options1.83.0
+      - libboost-thread1.83.0
       - libcairo2
       - libcrypto++6
       - libepoxy0
       - libfftw3-double3
       - libfreetype6
-      - libglibmm-2.4-1v5
+      - libglibmm-2.4-1t64
       - libglu1-mesa
-      - libicu66
-      - libjpeg8
+      - libicu74
+      - libjpeg9
       - liblapack3
       - libmodplug1
-      - libopencv-core4.2
-      - libopencv-highgui4.2
+      - libopencv-core406t64
+      - libopencv-highgui406t64
       - libopenblas-base
       - libopusfile0
       - libgdk-pixbuf2.0-0
       - libportaudio2
       - libportmidi0
       - libpulse0
-      - libpng16-16
+      - libpng16-16t64
       - libpangocairo-1.0-0
       - libcpprest2.10
       - librsvg2-2
       - libsndfile1
-      - libswscale5
+      - libswscale8
       - libsigc++-2.0-0v5
       - libsdl2-2.0-0
       - libsdl2-image-2.0-0
       - libsdl2-ttf-2.0-0
       - libsdl2-mixer-2.0-0
-      - libssl1.1
+      - libssl3t64
       - libxml++2.6-2v5
-      - libx264-155
+      - libx264-164
       - freepats

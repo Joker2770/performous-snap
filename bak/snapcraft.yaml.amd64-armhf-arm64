@@ -41,10 +41,16 @@ description: |
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
 base: core24
-architectures:
-  - build-on: amd64
-  - build-on: armhf
-  - build-on: arm64
+platforms:
+  amd64:
+    build-on: [amd64]
+    build-for: [amd64]
+  armhf:
+    build-on: [armhf]
+    build-for: [armhf]
+  arm64:
+    build-on: [arm64]
+    build-for: [arm64]
 
 plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
   desktop:

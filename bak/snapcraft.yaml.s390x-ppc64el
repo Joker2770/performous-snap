@@ -125,11 +125,7 @@ parts:
     cmake-parameters:
       - "-DCMAKE_CXX_STANDARD=17"
       - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DENABLE_TESTING=OFF"
-      - "-DBUILD_TESTING=OFF"
       - "-DCMAKE_INSTALL_PREFIX=/usr/local"
-      - "-DCMAKE_C_COMPILER=/usr/bin/gcc"
-      - "-DCMAKE_CXX_COMPILER=/usr/bin/g++"
     source: "https://github.com/performous/performous.git"
     source-depth: 1
     source-branch: master

@@ -40,13 +40,15 @@ description: |
 
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
-base: core20
+base: core24
 architectures:
   - build-on: amd64
   - build-on: armhf
   - build-on: arm64
 
-plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
+plugs:
+  desktop:
+    mount-host-font-cache: false
   gtk-3-themes:
     interface: content
     target: $SNAP/data-dir/themes
@@ -59,7 +61,15 @@ plugs: # plugs for theming, font settings, cursor and to use gtk3 file chooser
     interface: content
     target: $SNAP/data-dir/sounds
     default-provider: gtk-common-themes
-  
+  gnome-46-2404:
+    interface: content
+    target: $SNAP/gnome-platform
+    default-provider: gnome-46-2404
+  gpu-2404:
+    interface: content
+    target: $SNAP/gpu-2404
+    default-provider: mesa-2404
+
 apps:
   performous-snap:
     command-chain: ["snap/command-chain/alsa-launch"]
@@ -67,7 +77,9 @@ apps:
     environment:
       # pulseaudio
       LD_LIBRARY_PATH: "$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/blas:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/lapack:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/pulseaudio"
-    extensions: [gnome-3-38]
+      SNAP_DESKTOP_RUNTIME: $SNAP/gnome-platform
+      GTK_USE_PORTAL: '1'
+    extensions: [gnome]
     plugs:
       - home
       - audio-playback
@@ -82,8 +94,21 @@ apps:
       - opengl
       - gsettings
       - removable-media
+      - mount-observe
         
 layout:
+  /usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/webkit2gtk-4.0:
+    bind: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/webkit2gtk-4.0
+  /usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/webkit2gtk-4.1:
+    bind: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/webkit2gtk-4.1
+  /usr/share/xml/iso-codes:
+    bind: $SNAP/gnome-platform/usr/share/xml/iso-codes
+  /usr/share/libdrm:
+    bind: $SNAP/gpu-2404/libdrm
+  /usr/share/drirc.d:
+    symlink: $SNAP/gpu-2404/drirc.d
+  /usr/share/X11/XErrorDB:
+    symlink: $SNAP/gpu-2404/X11/XErrorDB
   /usr/share/midi/freepats:
     bind: $SNAP/usr/share/midi/freepats
   /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib:
@@ -117,11 +142,7 @@ parts:
     cmake-parameters:
       - "-DCMAKE_CXX_STANDARD=17"
       - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DENABLE_TESTING=OFF"
-      - "-DBUILD_TESTING=OFF"
       - "-DCMAKE_INSTALL_PREFIX=/usr/local"
-      - "-DCMAKE_C_COMPILER=/usr/bin/gcc"
-      - "-DCMAKE_CXX_COMPILER=/usr/bin/g++"
     source: "https://github.com/performous/performous.git"
     source-depth: 1
     source-branch: master

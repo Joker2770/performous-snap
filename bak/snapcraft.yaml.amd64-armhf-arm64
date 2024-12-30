@@ -173,7 +173,7 @@ parts:
       - libepoxy-dev
       - libfftw3-dev
       - libfmt-dev
-      - libfreetype6-dev
+      - libfreetype-dev
       - libglibmm-2.4-dev
       - libglm-dev
       - libgmock-dev
@@ -233,7 +233,7 @@ parts:
       - libcpprest2.10
       - librsvg2-2
       - libsndfile1
-      - libswscale8
+      - libswscale7
       - libsigc++-2.0-0v5
       - libsdl2-2.0-0
       - libsdl2-image-2.0-0

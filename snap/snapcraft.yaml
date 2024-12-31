@@ -41,16 +41,6 @@ description: |
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
 base: core24
-platforms:
-  amd64:
-    build-on: [amd64]
-    build-for: [amd64]
-  armhf:
-    build-on: [armhf]
-    build-for: [armhf]
-  arm64:
-    build-on: [arm64]
-    build-for: [arm64]
 
 plugs:
   desktop:
@@ -180,7 +170,6 @@ parts:
       - libgtest-dev
       - libicu-dev
       - libjpeg-dev
-      - libjpeg9-dev
       - libopenblas-dev
       - libopencv-dev
       - libopencv-highgui-dev
@@ -201,28 +190,28 @@ parts:
       - portaudio19-dev
     stage-packages:
       - libaubio5
-      - libavutil59
-      - libavcodec61
-      - libavformat61
+      - libavutil58
+      - libavcodec60
+      - libavformat60
       - libblas3
       - libboost-iostreams1.83.0
       - libboost-locale1.83.0
       - libboost-program-options1.83.0
       - libboost-thread1.83.0
       - libcairo2
-      - libcrypto++6
+      - libcrypto++8t64
       - libepoxy0
       - libfftw3-double3
       - libfreetype6
       - libglibmm-2.4-1t64
       - libglu1-mesa
       - libicu74
-      - libjpeg9
+      - libjpeg8
       - liblapack3
       - libmodplug1
       - libopencv-core406t64
       - libopencv-highgui406t64
-      - libopenblas-base
+      - libopenblas0
       - libopusfile0
       - libgdk-pixbuf2.0-0
       - libportaudio2
